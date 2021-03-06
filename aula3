@@ -1,0 +1,39 @@
+//criar as variáveis para tamanho, cores e afins
+float tam = map (width, 0, height, 0, 770);
+float cor = 0;
+float corY = 0; 
+
+float tam1 = map (width, 0, height, 0, 300);
+float corX = 0;
+float corZ = 0; 
+
+void setup() { //fundo e taxa de quadros
+  fullScreen();
+  frameRate(60);
+  background(0);
+}
+
+void draw() { // desenhode formas & fundo falso
+
+//fill(0,255); 
+//rectMode(CORNER);
+//rect(0, 0, width, height);
+
+  tam+= 11.0;
+  cor+= 1.4;
+  corY+= 0.5;
+
+  fill(cor%255, corY%255, 0, tam%770); 
+  ellipseMode(CENTER);
+  stroke(cor%255, corY%255, 0, tam%770);
+  ellipse(width/2, height/2, tam%770, tam%770);
+  
+  tam1 += 1.9;
+  corX += 2.8;
+  corZ += 0.5;
+  
+  fill(cor%255, 0, corZ%255, tam%300);
+  ellipseMode(CENTER);
+  stroke(cor%255, 0, corZ%255, tam%300);
+  ellipse(width/2, height/2, tam1%300, tam1%300);
+}
