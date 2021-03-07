@@ -1,0 +1,68 @@
+//criar as variáveis para tamanho, cores e afins
+float tam = map (width, 0, height, 0, 500);
+float cor = 0;
+float corY = 0; 
+
+float tam1 = map (width, 0, height, 0, 300);
+float corX = 0;
+float corZ = 0; 
+
+float t = 0;
+float corW = map (frameCount%255, 0, 255, 255, 0); 
+float corT = 0;
+
+
+void setup() { //fundo e taxa de quadros
+  fullScreen();
+  //frameRate(60);
+  background(0);
+}
+
+void draw() { // desenhode formas & fundo falso
+
+  //fill(0,255); 
+  //rectMode(CORNER);
+  //rect(0, 0, width, height);
+
+  tam+= 11.0;
+  cor+= 10.2;
+  corY+= 20.4;
+
+  fill(cor%255, frameCount%corY%255, 0, tam%500); 
+  ellipseMode(CENTER);
+  stroke(frameCount%cor%255, frameCount%corY%255, 0, tam%500);
+  ellipse(width/2, height/2, tam%500, tam%500);
+
+  //ellipse(width/2, height/2, random(tam%500), random(tam%500));
+  //essa linha forma elipses de eixos aleatórios
+  //do mesmo modo com a ellipse, essa linha
+  //ellipse(frameCount%width, frameCount%height, tam%500, tam%500);
+
+  tam1 += 0.8;
+  corX += 0.4;
+  corZ += 2.8;
+
+  fill(frameCount%corX%255, 0, frameCount%corZ%255, tam1%300);
+  ellipseMode(CENTER);
+  stroke(frameCount%corX%255, 0, frameCount%corZ%255, tam1%300);
+  ellipse(width/2, height/2, tam1%300, tam1%300);
+
+  //rect(frameCount%width, frameCount%height, tam1%300, tam1%300);
+  //essa linha acima cria uma aleatoriedade na formação do rect
+  //funciona melhor com o fundo falso.
+  
+for (int i = 0; i < 100000; i ++) {
+    t = i * 1000.0;
+  }
+  corW+=2.2;
+  corT+=4.4;
+  
+  //aqui há uma tentativa de formar mais uma série de variáveis
+  //e usar uma forma mais cadenciada de fazer seu incremento
+  
+  fill(frameCount%corW%255, frameCount%corT%255, frameCount%t%200);
+  ellipseMode(CENTER);
+  stroke(corW%255, corT%255, frameCount%t%200);
+  strokeWeight(6);
+  ellipse(width/4, height/4, frameCount%t%200, frameCount%t%200);
+}
